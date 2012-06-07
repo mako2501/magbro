@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+		<h:panelGroup layout="block" styleClass="panel">
+			<h1>Lista żołnierzy</h1>
+			<br />
+			<br />
+			<ui:repeat var="v_soldier" value="#{soldierBean.soldiersWhosGotKbkak}">
+			#{v_soldier.rank}	#{v_soldier.firstName} #{v_soldier.lastName}<br />
+
+			</ui:repeat>
+		</h:panelGroup>
+		
+	
+</ui:composition>

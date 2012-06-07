@@ -12,8 +12,10 @@ import javax.inject.Qualifier;
  * qualify for which injection points. For this application, it is used to
  * qualify the {@link EntityManager} injection point.
  * 
-*/ 
+ * wcześniej był taki qualifier
+ * @Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
+ */
 @Qualifier
-@Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
+@Target({ElementType.TYPE,ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DataRepository {}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="content">
+	<h:panelGroup>
+	<h1>Dodaj żołnierza</h1>
+	<h:form id="personEdit">
+      			Imię<br />
+				<h:inputText value="#{soldierBean.soldier.firstName}" id="firstName" style="margin-right : 8px"/>
+				<h:message for="firstName" styleClass="errorMessage" /><!-- za co odpowiada massage id -->
+				<br />
+				<br />      
+			      Nazwisko<br />
+				<h:inputText value="#{soldierBean.soldier.lastName}" id="lastName" style="margin-right : 8px"/>
+				<h:message for="lastName" styleClass="errorMessage" />
+				<br />
+				<br />
+				Stopień<br />
+				<br />
+				
+				<h:selectOneMenu id="selectRank" value="#{soldierBean.soldier.rank}">
+ 					
+ 					 <f:selectItems value="#{soldierBean.ranks}" />
+  					 
+					</h:selectOneMenu> 
+			
+				<h:commandButton value="Dodaj" action="#{soldierBean.saveSoldier}" />
+				
+			</h:form>
+			<h:form><h:commandButton value="Anuluj" action="allsoldiers?faces-redirect=true"  /></h:form>
+	
+	
+	</h:panelGroup>
+		
+	</ui:define>
+</ui:composition>

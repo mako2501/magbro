@@ -6,7 +6,13 @@
 	template="/WEB-INF/templates/template.xhtml">
 	
 	<ui:define name="content">
-	<h:panelGroup layout="block" styleClass="panel"><h1>Magazyn broni</h1>Podstawowe operacje</h:panelGroup>
-	
+	<h:form>
+	<h:panelGroup layout="block" styleClass="panel">
+				<h1>Opcje</h1><br />
+     	 <h:commandButton id="submit" value="Dodaj" action="addsoldier?faces-redirect=true"></h:commandButton>
+     	 </h:panelGroup>
+	<ui:include src="/widoki/zolnierze/list.xhtml" />
+		</h:form>
+		
 	</ui:define>
 </ui:composition>

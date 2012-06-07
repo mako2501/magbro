@@ -1,34 +1,30 @@
 package mako.magbro.model;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import mako.magbro.model.Kbkak;
-
 @Entity
-@Table(name="SOLDIERS")
-
+@Table(name = "SOLDIERS")
 public class Soldier {
-
-	//private List<Kbkak> kbkakList = new ArrayList<Kbkak>();
 	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private int id;
 	
 	@Column(length = 25)
 	@Size(max = 25)
@@ -42,15 +38,28 @@ public class Soldier {
 	@NotEmpty
 	private String lastName;
 	
+
+	@Size(max = 20)
 	@NotNull
 	@NotEmpty
 	private String rank;
+	
+	@OneToOne(fetch=FetchType.LAZY)
+	private Kbkak kbkak;
+	
+	public Kbkak getKbkak() {
+		return kbkak;
+	}
 
-	public Long getId() {
+	public void setKbkak(Kbkak kbkak) {
+		this.kbkak = kbkak;
+	}
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -77,14 +86,6 @@ public class Soldier {
 	public void setRank(String rank) {
 		this.rank = rank;
 	}
-/*
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	public List<Kbkak> getKbkakList() {
-		return kbkakList;
-	}
-
-	public void setKbkakList(List<Kbkak> kbkakList) {
-		this.kbkakList = kbkakList;
-	}
-*/	
+	
+	
 }

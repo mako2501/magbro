@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="content">
+	<!--  
+		<h:panelGroup layout="block" styleClass="panel">
+			<h1>Access CDI bean from JSF</h1>
+		Your CDI bean <code>helloBean</code> says "#{helloBean.helloMessage}"<br />
+			<br />
+		</h:panelGroup>
+		<h:form id="helloForm">
+
+			<h:panelGroup layout="block" styleClass="panel">
+				<h1>JSF interacting with CDI</h1>
+      Enter Name<br />
+				<h:inputText value="#{helloBean.name}" />
+				<br />
+				<h:commandButton value="Submit" />
+				<br />
+      Message : <h:outputText value="#{helloBean.message}" />
+			</h:panelGroup>
+		</h:form>
+		-->
+
+		<h:panelGroup layout="block" styleClass="panel">
+			<h1>JPA, CDI, JSF and Validation</h1>
+			<small>Try leaving values blank or making them longer than 25
+			chars</small>
+			<br />
+			<br />
+
+			<h:form id="personEdit">
+      			FirstName<br />
+				<h:inputText value="#{soldierBean.soldier.firstName}" id="firstName" style="margin-right : 8px"/>
+				<h:message for="firstName" styleClass="errorMessage" /><!-- za co odpowiada massage id -->
+				<br />
+				<br />      
+			      LastName<br />
+				<h:inputText value="#{soldierBean.soldier.lastName}" id="lastName" style="margin-right : 8px"/>
+				<h:message for="lastName" styleClass="errorMessage" />
+				<br />
+				<br />
+				Rank<br />
+				<h:inputText value="#{soldierBean.soldier.rank}" id="rank" style="margin-right : 8px"/>
+				<h:message for="rank" styleClass="errorMessage" />
+				<br />
+				<br />
+			
+				<h:commandButton value="Add" action="#{soldierBean.saveSoldier}" />
+			</h:form>
+			<br />
+			<small>The validation logic is coming from the annotations
+			we added to the model</small>			
+
+			<h3 style="text-decoration: underline;">Lista żołnierzy</h3>
+			<ui:repeat var="v_soldier" value="#{soldierBean.soldiers}">
+	#{v_soldier.rank}	#{v_soldier.firstName} #{v_soldier.lastName} <br />
+			</ui:repeat>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>
