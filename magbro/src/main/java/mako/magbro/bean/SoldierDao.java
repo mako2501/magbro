@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 
 import mako.magbro.model.Soldier;
 import mako.magbro.qualifier.DataRepository;
@@ -20,11 +21,13 @@ public class SoldierDao {
 	public void saveSoldier(Soldier s)
 	{
 		em.persist(s);
+		
 	}
 	@SuppressWarnings("unchecked")
 	public List<Soldier> getSoldiers()
 	{
 		return em.createQuery("select p from Soldier p").getResultList();
+		//return em.createQuery("soldiers.all").getResultList();
 	}
 	@SuppressWarnings("unchecked")
 	public List<Soldier> getSoldiersWhosGotKbkak()
@@ -35,6 +38,12 @@ public class SoldierDao {
 	public List<Soldier> getSoldiersBy(String what,String var)
 	{
 		return em.createQuery("select p from Soldier p where "+what+"="+"var").getResultList();
+		
+	}
+	public void deleteSoldier(Soldier soldierToDelete) {
+		soldierToDelete = em.find(Soldier.class, soldierToDelete.getId());
+		em.remove(soldierToDelete);
+		
 	}
 	
 	

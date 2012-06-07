@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.model.ListDataModel;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -20,6 +21,7 @@ public class SoldierBean {
 	private SoldierDao sdao;
 	
 	private Soldier soldier = new Soldier();
+	private ListDataModel<Soldier> soldiers = new ListDataModel<Soldier>();
 	
 
 	private List<String>ranks = new ArrayList<String>();
@@ -41,10 +43,17 @@ public class SoldierBean {
 		return "allsoldiers";
 	}
 	
-	
-	public List<Soldier>getSoldiers()
+	public String deleteSoldier()
 	{
-		return sdao.getSoldiers();
+		Soldier soldierToDelete = soldiers.getRowData();
+		sdao.deleteSoldier(soldierToDelete);
+		return null;
+	}
+	
+	public ListDataModel<Soldier>getSoldiers()
+	{
+		soldiers.setWrappedData(sdao.getSoldiers());
+		return soldiers;
 	}
 	
 	public List<Soldier>getSoldiersWhosGotKbkak()
