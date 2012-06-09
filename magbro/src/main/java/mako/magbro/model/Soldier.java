@@ -1,9 +1,5 @@
 package mako.magbro.model;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,9 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -84,13 +78,18 @@ public class Soldier {
 		this.ojciec = ojciec;
 	}
 
-	@OneToOne(fetch=FetchType.LAZY)
+	@OneToOne(fetch=FetchType.EAGER)
 	private Kbkak kbkak;
 	
 	public Kbkak getKbkak() {
 		return kbkak;
 	}
 
+	public String getNrKalacha()
+	{
+		return kbkak.getNr();
+	}
+	
 	public void setKbkak(Kbkak kbkak) {
 		this.kbkak = kbkak;
 	}

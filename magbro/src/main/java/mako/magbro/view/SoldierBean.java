@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import mako.magbro.bean.SoldierDao;
+import mako.magbro.model.Kbkak;
 import mako.magbro.model.Soldier;
 
 
@@ -22,7 +23,8 @@ public class SoldierBean {
 	
 	private Soldier soldier = new Soldier();
 	private ListDataModel<Soldier> soldiers = new ListDataModel<Soldier>();
-	
+	private ListDataModel<Soldier> soldiersWithKbkak = new ListDataModel<Soldier>();
+	private Kbkak kbkak = new Kbkak();
 
 	private List<String>ranks = new ArrayList<String>();
 
@@ -56,9 +58,10 @@ public class SoldierBean {
 		return soldiers;
 	}
 	
-	public List<Soldier>getSoldiersWhosGotKbkak()
+	public ListDataModel<Soldier>getSoldiersWhosGotKbkak()
 	{
-		return sdao.getSoldiersWhosGotKbkak();
+		soldiersWithKbkak.setWrappedData(sdao.getSoldiersWhosGotKbkak());
+		return soldiersWithKbkak;
 	}
 	
 	public Soldier getSoldier()
@@ -69,5 +72,13 @@ public class SoldierBean {
 	public void setSoldier(Soldier soldier) {
 		this.soldier = soldier;
 	}
+	
+	public String getKbkak()
+	{
+		kbkak = sdao.getKbkak(soldier);
+		return "aa85654";
+	}
+
+	
 	
 }

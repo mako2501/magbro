@@ -3,7 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
- 
+ <!-- LISTA ZOLNIERZY -->
 		<h:panelGroup layout="block" styleClass="panel">
 			<h1>Lista żołnierzy</h1>
 			<br />
@@ -24,6 +24,8 @@
     			<f:facet name="header">Imię</f:facet>
     			#{s.firstName}
     		</h:column>
+    	
+    		
     		<h:column>
     			<f:facet name="header">Akcja</f:facet>
   <h:commandButton id="submit" value="Usuń" action="#{soldierBean.deleteSoldier}" ></h:commandButton>

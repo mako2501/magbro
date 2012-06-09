@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich">
+	<!-- DODAWANIE DO BAZY KBKAK -->
+	<ui:define name="content">
+	<h:panelGroup layout="block" styleClass="panel">
+	<h1>Dodaj karabinek</h1>
+	
+	<h:form id="kbkakEdit">
+	<h:panelGrid id="panel" columns="2" cellpadding="3" cellspacing="10">
+     
+     <h:panelGroup>
+     		<h:outputText value="Nr seryjny" />	<br />
+				<h:inputText value="#{kbkakBean.kbkak.nr}" id="nr" style="margin-right : 1px"/>
+				<h:outputText value="*" style="color:red" />
+				<h:message for="nr" styleClass="errorMessage" />
+			</h:panelGroup>
+			
+				<h:panelGroup>
+				<h:outputText value="Rok produkcji"/>	<br />
+				<h:inputText value="#{kbkakBean.kbkak.rok}" id="rok" style="margin-right : 1px"/>
+				<h:outputText value="*" style="color:red" />
+				<h:message for="rok" styleClass="errorMessage" />
+			</h:panelGroup>			
+			</h:panelGrid>
+			<br />
+			
+		<h:outputText value="  " />
+				<h:commandButton value="Dodaj" action="#{kbkakBean.saveKbkak}"/>
+			</h:form>
+<h:form>
+<h:outputText value="  " />
+<h:commandButton value="Anuluj" action="allkbkak?faces-redirect=true"/>
+</h:form>
+			
+			<br />
+			<small style="color:red">* pola wymagane</small>
+	
+	</h:panelGroup>
+		
+	</ui:define>
+</ui:composition>

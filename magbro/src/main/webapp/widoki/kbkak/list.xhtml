@@ -3,35 +3,28 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
- <!-- LISTA ZOLNIERZY -->
+ <!-- KBKAK LISTA -->
 		<h:panelGroup layout="block" styleClass="panel">
-			<h1>Lista żołnierzy</h1>
+			<h1>Lista broni - Kbkak</h1>
 			<br />
 			<h:form>
-    		<h:dataTable value="#{soldierBean.soldiersWhosGotKbkak}" var="s"
+    		<h:dataTable value="#{kbkakBean.kalachs}" var="k"
     			styleClass="dataTable"
     			headerClass="order-table-header"
     			rowClasses="order-table-odd-row,order-table-even-row">
     		<h:column>
-    			<f:facet name="header">Stopień</f:facet>
-    			#{s.rank}
+    			<f:facet name="header">Numer seryjny</f:facet>
+    			#{k.nr}
     		</h:column>
     		<h:column>
-    			<f:facet name="header">Nazwisko</f:facet>
-    			#{s.lastName}
+    			<f:facet name="header">Rok produkcji</f:facet>
+    			#{k.rok}
     		</h:column>
-    		<h:column>
-    			<f:facet name="header">Imię</f:facet>
-    			#{s.firstName}
-    		</h:column>	
-    		<h:column>
-    			<f:facet name="header">Nr broni</f:facet>
-    		<!--  	M A S A K R A -->#{s.kbkak.nr}
-    		</h:column>	
+    	 
     		<h:column>
     			<f:facet name="header">Akcja</f:facet>
-  <h:commandButton id="submit" value="Usuń" action="#{soldierBean.deleteSoldier}" ></h:commandButton>
-    		</h:column>
+  <h:commandButton id="submit" value="Usuń" action="#{kbkakBean.deleteKbkak}" ></h:commandButton>
+    		</h:column> 	
     		
     		</h:dataTable></h:form>
 		</h:panelGroup>
