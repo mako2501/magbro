@@ -3,36 +3,74 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/template.xhtml">
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich">
 	
 	<ui:define name="content">
-	<h:panelGroup>
+	<h:panelGroup layout="block" styleClass="panel">
 	<h1>Dodaj żołnierza</h1>
-	<h:form id="personEdit">
-      			Imię<br />
-				<h:inputText value="#{soldierBean.soldier.firstName}" id="firstName" style="margin-right : 8px"/>
-				<h:message for="firstName" styleClass="errorMessage" /><!-- za co odpowiada massage id -->
-				<br />
-				<br />      
-			      Nazwisko<br />
-				<h:inputText value="#{soldierBean.soldier.lastName}" id="lastName" style="margin-right : 8px"/>
-				<h:message for="lastName" styleClass="errorMessage" />
-				<br />
-				<br />
-				Stopień<br />
-				<br />
-				
-				<h:selectOneMenu id="selectRank" value="#{soldierBean.soldier.rank}">
- 					
- 					 <f:selectItems value="#{soldierBean.ranks}" />
-  					 
-					</h:selectOneMenu> 
-			
-				<h:commandButton value="Dodaj" action="#{soldierBean.saveSoldier}" />
-				
-			</h:form>
-			<h:form><h:commandButton value="Anuluj" action="allsoldiers?faces-redirect=true"  /></h:form>
 	
+	<h:form id="personEdit">
+	<h:panelGrid id="panel" columns="2" cellpadding="3" cellspacing="10">
+     
+     <h:panelGroup>
+     		<h:outputText value="Imię" />	<br />
+				<h:inputText value="#{soldierBean.soldier.firstName}" id="firstName" style="margin-right : 1px"/>
+				<h:outputText value="*" style="color:red" />
+				<h:message for="firstName" styleClass="errorMessage" />
+			</h:panelGroup>
+			
+				<h:panelGroup>
+				<h:outputText value="Pesel"/>	<br />
+				<h:inputText value="#{soldierBean.soldier.pesel}" id="pesel" style="margin-right : 1px"/>
+				<h:outputText value="*" style="color:red" />
+				<h:message for="pesel" styleClass="errorMessage" />
+			</h:panelGroup>
+		
+			
+			    <h:panelGroup> 
+			  <h:outputText value="Nazwisko" />	<br />
+				<h:inputText value="#{soldierBean.soldier.lastName}" id="lastName" style="margin-right : 1px"/>
+				<h:outputText value="*" style="color:red" />
+				<h:message for="lastName" styleClass="errorMessage" />
+				</h:panelGroup>
+				
+				<h:panelGroup>
+					<h:outputText value="Ojciec"/><br />	
+				<h:inputText value="#{soldierBean.soldier.ojciec}" id="ojciec" style="margin-right : 1px"/>
+				<h:message for="ojciec" styleClass="errorMessage"/>
+				</h:panelGroup>
+				
+		
+				<h:panelGroup>
+				<h:outputText value="Stopień"/>	<br />
+				<h:selectOneMenu id="selectRank" value="#{soldierBean.soldier.rank}">
+ 					 <f:selectItems value="#{soldierBean.ranks}"/> 
+					</h:selectOneMenu> 
+				</h:panelGroup>
+				
+				<h:panelGroup>
+				<h:outputText value="Wiek"/>	<br />
+				<rich:inputNumberSlider value="#{soldierBean.soldier.age}" width="500" minValue="16" maxValue="80"  
+				step="1" showArrows="true" showTooltip="false" />
+				
+				</h:panelGroup>
+				
+			</h:panelGrid>
+			<br />
+			
+		<h:outputText value="  " />
+				<h:commandButton value="Dodaj" action="#{soldierBean.saveSoldier}"/>
+	
+			</h:form>
+<h:form>
+<h:outputText value="  " />
+<h:commandButton value="Anuluj" action="allsoldiers?faces-redirect=true"/>
+</h:form>
+			
+			<br />
+			<small style="color:red">* pola wymagane</small>
 	
 	</h:panelGroup>
 		

@@ -5,7 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+
 
 import mako.magbro.model.Soldier;
 import mako.magbro.qualifier.DataRepository;

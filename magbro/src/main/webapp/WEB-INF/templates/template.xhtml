@@ -2,7 +2,9 @@
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich">
 <h:head>
 	<title>magazyn broni</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -14,11 +16,17 @@
 			<h1><a href="home.jsf">MAGAZYN BRONI</a></h1>
 		</h:panelGroup>
 		<h:panelGroup id="container" layout="block">
-			<h:panelGroup id="sidebar" layout="block" styleClass="panel">
+			<!--  <h:panelGroup id="sidebar" layout="block">
 
 				<h1>Wybierz</h1> <ui:insert name="sidebar"><ui:include src="/widoki/sidebar.xhtml" /></ui:insert>
 			
 			</h:panelGroup>
+			-->
+			<rich:panel header="Wybierz" style="width:200px;float:left;padding:4px;">
+			
+			<ui:include src="/widoki/sidebar.xhtml" />
+			
+			</rich:panel>
 			<h:panelGroup id="content" layout="block">
 				<ui:insert name="content">Main Content</ui:insert>
 			</h:panelGroup>

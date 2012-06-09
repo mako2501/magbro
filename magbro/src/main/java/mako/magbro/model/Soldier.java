@@ -12,10 +12,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Table(name = "SOLDIERS")
@@ -44,6 +48,42 @@ public class Soldier {
 	@NotEmpty
 	private String rank;
 	
+	
+	@Pattern(regexp = "[0-9]{11}")
+	private String pesel;
+	
+	@Size(max = 25)
+	private String ojciec;
+	
+	
+	@Range(max=100,min=16)
+	private int age;
+	
+	
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getPesel() {
+		return pesel;
+	}
+
+	public void setPesel(String pesel) {
+		this.pesel = pesel;
+	}
+
+	public String getOjciec() {
+		return ojciec;
+	}
+
+	public void setOjciec(String ojciec) {
+		this.ojciec = ojciec;
+	}
+
 	@OneToOne(fetch=FetchType.LAZY)
 	private Kbkak kbkak;
 	

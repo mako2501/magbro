@@ -10,10 +10,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jboss.home>${env.JBOSS_HOME}</jboss.home>
-		<jboss.domain>default</jboss.domain>
+		<org.richfaces.bom.version>4.1.0.Final</org.richfaces.bom.version>
 	</properties>
-
+<dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>org.jboss.spec</groupId>
@@ -22,21 +21,39 @@
 			<scope>provided</scope>
 			<type>pom</type>
 		</dependency>
-
-		<!--
-			Default Implementation that carries additional validators. Should be
-			removed in the event of the server using an alternate validations
-			implementation since the proprietary ones in hibernate won't be
-			available anymore
-		-->
-
+		<dependency>
+				<groupId>org.richfaces</groupId>
+				<artifactId>richfaces-bom</artifactId>
+				<version>${org.richfaces.bom.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+		</dependencies>
+</dependencyManagement>
+<dependencies>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>4.0.0.GA</version>
 			<scope>provided</scope>
 		</dependency>
-
+	
+		
+			<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-web-api</artifactId>
+			<version>6.0</version>
+			<scope>provided</scope>
+		</dependency>
+	<dependency>
+        <groupId>org.richfaces.ui</groupId>
+        <artifactId>richfaces-components-ui</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.richfaces.core</groupId>
+        <artifactId>richfaces-core-impl</artifactId>
+    </dependency>
+		
 	</dependencies>
 
 	<repositories>

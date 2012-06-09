@@ -3,11 +3,10 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
-
+ 
 		<h:panelGroup layout="block" styleClass="panel">
 			<h1>Lista żołnierzy</h1>
 			<br />
-			
 			<h:form>
     		<h:dataTable value="#{soldierBean.soldiers}" var="s"
     			styleClass="dataTable"
@@ -27,12 +26,9 @@
     		</h:column>
     		<h:column>
     			<f:facet name="header">Akcja</f:facet>
-  <h:commandButton id="submit" value="Usuń" action="#{soldierBean.deleteSoldier}"></h:commandButton>
+  <h:commandButton id="submit" value="Usuń" action="#{soldierBean.deleteSoldier}" ></h:commandButton>
     		</h:column>
     		
     		</h:dataTable></h:form>
-    		
 		</h:panelGroup>
-		
-	
 </ui:composition>
