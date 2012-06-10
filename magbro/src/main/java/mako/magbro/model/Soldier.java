@@ -78,16 +78,11 @@ public class Soldier {
 		this.ojciec = ojciec;
 	}
 
-	@OneToOne(fetch=FetchType.EAGER)
+	@OneToOne(fetch=FetchType.LAZY)
 	private Kbkak kbkak;
 	
 	public Kbkak getKbkak() {
 		return kbkak;
-	}
-
-	public String getNrKalacha()
-	{
-		return kbkak.getNr();
 	}
 	
 	public void setKbkak(Kbkak kbkak) {

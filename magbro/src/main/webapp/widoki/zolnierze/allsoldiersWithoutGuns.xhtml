@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="content">
+	<!-- LISTA ZOLNIERZY NIE POSIADAJĄCYCH BRONI -->
+		<h:panelGroup layout="block" styleClass="panel">
+			<h1>Lista żołnierzy</h1><small>żołnierze nie posiadający przypisanej broni</small>
+			<br />
+			<h:form>
+    		<h:dataTable value="#{soldierBean.soldiersWithoutKbkak}" var="s"
+    			styleClass="dataTable"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row">
+    		<h:column>
+    			<f:facet name="header">Stopień</f:facet>
+    			#{s.rank}
+    		</h:column>
+    		<h:column>
+    			<f:facet name="header">Nazwisko</f:facet>
+    			#{s.lastName}
+    		</h:column>
+    		<h:column>
+    			<f:facet name="header">Imię</f:facet>
+    			#{s.firstName}
+    		</h:column>
+    		<h:column>
+    			<f:facet name="header">Akcja</f:facet>
+  <h:commandButton id="submit" value="Usuń" action="#{soldierBean.deleteSoldier}" ></h:commandButton>
+ <h:commandButton id="submit2" value="Przydziel" action="#{soldierBean.setSoldierToAscriptKbkak}" ></h:commandButton>
+    		</h:column>
+    		</h:dataTable></h:form>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>

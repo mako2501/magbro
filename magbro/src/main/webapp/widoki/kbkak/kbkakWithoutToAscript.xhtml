@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="content">
+	<!-- KBKAK KTORE NIE SA PRZYPISANE -->
+
+		<h:panelGroup layout="block" styleClass="panel">
+			<h1>Jaką broń przydzielić żołnierzowi: #{soldierBean.soldierToAscript.rank} #{soldierBean.soldierToAscript.lastName}</h1>
+			<small>karabinki, które nie są przydzielone żołnierzom</small>
+			<br />
+			<h:form>
+			<!-- przy anuluj trzeba wyczyscic zmienne -->
+<h:commandButton value="Anuluj" action="#{soldierBean.anulujPrzypisanieKbkak}"/>
+</h:form>
+			<h:form>
+    		<h:dataTable value="#{kbkakBean.niePrzypisaneKbkak}" var="k"
+    			styleClass="dataTable"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row">
+    		<h:column>
+    			<f:facet name="header">Numer seryjny</f:facet>
+    			#{k.nr}
+    		</h:column>
+    		<h:column>
+    			<f:facet name="header">Rok produkcji</f:facet>
+    			#{k.rok}
+    		</h:column>
+    		    	 
+    		<h:column>    	
+    			<f:facet name="header">Akcja</f:facet>
+  <h:commandButton id="submit2" value="Przydziel" action="#{kbkakBean.setKbkToAscriptWithSoldier}" ></h:commandButton>
+    	    		</h:column> 	
+    		
+    		</h:dataTable></h:form>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>

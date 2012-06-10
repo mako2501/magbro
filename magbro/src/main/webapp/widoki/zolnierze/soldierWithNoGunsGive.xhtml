@@ -2,13 +2,22 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
- <!-- LISTA ZOLNIERZY -->
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="content">
+
+	
+		<!-- LISTA ZOLNIERZY NIE POSIADAJĄCYCH BRONI w momencie gdy chce wybrac komu przydzielić-->
 		<h:panelGroup layout="block" styleClass="panel">
-			<h1>Lista żołnierzy</h1>
+			<h1>Komu przydzielić broń o numerze #{kbkakBean.kbkakToAscript.nr}?</h1><small>żołnierze nie posiadający przypisanej broni</small>
 			<br />
 			<h:form>
-    		<h:dataTable value="#{soldierBean.soldiersWhosGotKbkak}" var="s"
+			<!-- przy anuluj trzeba wyczyscic zmienne -->
+<h:commandButton value="Anuluj" action="#{kbkakBean.anulujPrzypisanie}"/>
+</h:form>
+			<h:form>
+    		<h:dataTable value="#{soldierBean.soldiersWithoutKbkak}" var="s"
     			styleClass="dataTable"
     			headerClass="order-table-header"
     			rowClasses="order-table-odd-row,order-table-even-row">
@@ -23,16 +32,14 @@
     		<h:column>
     			<f:facet name="header">Imię</f:facet>
     			#{s.firstName}
-    		</h:column>	
-    		<h:column>
-    			<f:facet name="header">Nr broni</f:facet>
-    		<!--  	M A S A K R A -->#{s.kbkak.nr}
-    		</h:column>	
+    		</h:column>
     		<h:column>
     			<f:facet name="header">Akcja</f:facet>
-  <h:commandButton id="submit" value="Usuń" action="#{soldierBean.deleteSoldier}" ></h:commandButton>
-    		</h:column>
-    		
+  <h:commandButton id="submit" value="Przydziel" action="#{soldierBean.setSoldierToAscript}" ></h:commandButton>
+    		</h:column>	
     		</h:dataTable></h:form>
+    		
+    		
 		</h:panelGroup>
+	</ui:define>
 </ui:composition>

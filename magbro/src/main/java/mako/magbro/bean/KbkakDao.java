@@ -30,6 +30,18 @@ public class KbkakDao {
 		//return em.createQuery("soldiers.all").getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Soldier> getPrzypisaneKbkak()
+	{
+		return em.createQuery("from Kbkak k left join fetch k.soldier where soldier_id!=null").getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Soldier> getNiePrzypisaneKbkak()
+	{
+		return em.createQuery("from Kbkak k where soldier_id=null").getResultList();
+	}
+
 	public void deleteKbkak(Kbkak k)
 	{
 		//znajduje element klasy Kbkak po jego polu id i zwraca go
@@ -37,4 +49,18 @@ public class KbkakDao {
 		em.remove(k);
 	}
 	
+	/*
+	 * zrobilem nowa klase ascription i tam jest ta metoda
+	public void giveKbkakToSoldier(Kbkak k)
+	{
+		
+		Soldier s = em.find(Soldier.class, 1);//wybieram na razie pierwszego zolnierza
+		s.setKbkak(k);//i przydzielam zolniezowi wybrany kbkak
+		k = em.find(Kbkak.class, k.getId());//wybieram kalacha z bazy po id
+		k.setSoldier(s);// i dodaje mu zolnierza
+		em.persist(k);
+		em.persist(s);
+		
+	}
+	*/
 }

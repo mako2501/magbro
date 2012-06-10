@@ -2,15 +2,13 @@ package mako.magbro.view;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.enterprise.context.RequestScoped;
 import javax.faces.model.ListDataModel;
-
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import mako.magbro.bean.AscriptionManager;
 import mako.magbro.bean.SoldierDao;
-import mako.magbro.model.Kbkak;
 import mako.magbro.model.Soldier;
 
 
@@ -21,12 +19,27 @@ public class SoldierBean {
 	@Inject
 	private SoldierDao sdao;
 	
+	@Inject 
+	AscriptionManager am;
+	
 	private Soldier soldier = new Soldier();
+	/*
+	 * by nie trzymac obiektu Soldier w roznych zmiennych zaleznych od zapytan poki co
+	 * trzymam ja w soldiers, by moc z tej klozystac w roznych metodach usuwania itd zamiast
+	 * private ListDataModel<Soldier> soldiersWithKbkak = new ListDataModel<Soldier>();
+	 */
+	
 	private ListDataModel<Soldier> soldiers = new ListDataModel<Soldier>();
-	private ListDataModel<Soldier> soldiersWithKbkak = new ListDataModel<Soldier>();
-	private Kbkak kbkak = new Kbkak();
+	
+	private Soldier soldierToAscript;
 
+	public Soldier getSoldierToAscript() {
+		return soldierToAscript;
+	}
+
+	
 	private List<String>ranks = new ArrayList<String>();
+	
 
 	public List <String> getRanks()
 	{
@@ -42,7 +55,7 @@ public class SoldierBean {
 	{
 		sdao.saveSoldier(soldier);//dao zapisuje zolnierza
 		soldier = new Soldier();//i tworze nowego by wyczyscic wartosci
-		return "allsoldiers";
+		return "/widoki/zolnierze/allsoldiers";
 	}
 	
 	public String deleteSoldier()
@@ -60,10 +73,17 @@ public class SoldierBean {
 	
 	public ListDataModel<Soldier>getSoldiersWhosGotKbkak()
 	{
-		soldiersWithKbkak.setWrappedData(sdao.getSoldiersWhosGotKbkak());
-		return soldiersWithKbkak;
+		//soldiersWithKbkak.setWrappedData(sdao.getSoldiersWhosGotKbkak());
+		soldiers.setWrappedData(sdao.getSoldiersWhosGotKbkak());
+		return soldiers;
 	}
-	
+	//soldiersWithoutKbkak
+	public ListDataModel<Soldier>getSoldiersWithoutKbkak()
+	{
+		//soldiersWithKbkak.setWrappedData(sdao.getSoldiersWhosGotKbkak());
+		soldiers.setWrappedData(sdao.getSoldiersWithoutKbkak());
+		return soldiers;
+	}
 	public Soldier getSoldier()
 	{
 		return soldier;
@@ -72,13 +92,28 @@ public class SoldierBean {
 	public void setSoldier(Soldier soldier) {
 		this.soldier = soldier;
 	}
-	
-	public String getKbkak()
+	//gdy juz znam bron teraz podaje zolnierza
+	public String setSoldierToAscript()
 	{
-		kbkak = sdao.getKbkak(soldier);
-		return "aa85654";
+		soldierToAscript = soldiers.getRowData();
+		am.giveKbkakToSoldier(soldierToAscript);
+		return "/widoki/zolnierze/allsoldiersWithGuns";
 	}
-
+	//gdy nie znam jeszcze kbkak ale musze przekazac zolnierza
+	public String setSoldierToAscriptKbkak()
+	{
+		soldierToAscript = soldiers.getRowData();
+		am.setSoldierToAscript(soldierToAscript);
+		return "/widoki/kbkak/kbkakWithoutToAscript";
+	}
+	//gdy anuluje przypisanie kbk
+	public String anulujPrzypisanieKbkak()
+	{
+		soldierToAscript=null;
+		am.setSoldierToAscript(soldierToAscript);
+		am.setKbkakToAscript(null);
+		return "/widoki/zolnierze/allsoldiersWithoutGuns";
+	}
 	
 	
 }

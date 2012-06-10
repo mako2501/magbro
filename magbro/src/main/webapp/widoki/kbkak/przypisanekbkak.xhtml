@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="content">
+	<!-- KBKAK KTORE NIE SA PRZYPISANE -->
+
+		<h:panelGroup layout="block" styleClass="panel">
+			<h1>Lista broni - przydzielone Kbkak</h1><small>karabinki, które są przydzielone żołnierzom</small>
+			<br />
+			<h:form>
+    		<h:dataTable value="#{kbkakBean.przypisaneKbkak}" var="k"
+    			styleClass="dataTable"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row">
+    		<h:column>
+    			<f:facet name="header">Numer seryjny</f:facet>
+    			#{k.nr}
+    		</h:column>
+    		<h:column>
+    			<f:facet name="header">Rok produkcji</f:facet>
+    			#{k.rok}
+    		</h:column>
+    		<h:column>
+    			<f:facet name="header">Komu</f:facet>
+    			#{k.soldier.rank} #{k.soldier.lastName} #{k.soldier.firstName}
+    		</h:column>
+    		    	 
+    		<h:column>
+    			<f:facet name="header">Akcja</f:facet>
+    			<!-- przypisanych nie mozna sobie od tak usuwac -->
+  <h:commandButton id="submit" value="Zdejmij" ></h:commandButton>
+    		</h:column> 	
+    		
+    		</h:dataTable></h:form>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>

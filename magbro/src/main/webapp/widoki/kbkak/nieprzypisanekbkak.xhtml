@@ -2,13 +2,17 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
- <!-- KBKAK LISTA -->
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="content">
+	<!-- KBKAK KTORE NIE SA PRZYPISANE -->
+
 		<h:panelGroup layout="block" styleClass="panel">
-			<h1>Lista broni - Kbkak</h1>
+			<h1>Lista broni - nie przydzielone Kbkak</h1><small>karabinki, które nie są przydzielone żołnierzom</small>
 			<br />
 			<h:form>
-    		<h:dataTable value="#{kbkakBean.kalachs}" var="k"
+    		<h:dataTable value="#{kbkakBean.niePrzypisaneKbkak}" var="k"
     			styleClass="dataTable"
     			headerClass="order-table-header"
     			rowClasses="order-table-odd-row,order-table-even-row">
@@ -20,12 +24,14 @@
     			<f:facet name="header">Rok produkcji</f:facet>
     			#{k.rok}
     		</h:column>
-    	 
-    		<h:column>
+    		    	 
+    		<h:column>    	
     			<f:facet name="header">Akcja</f:facet>
-  <h:commandButton id="submit" value="Usuń" action="#{kbkakBean.deleteKbkak}" ></h:commandButton>
-    		</h:column> 	
+  <h:commandButton id="submit" value="Usuń" action="#{kbkakBean.deleteKbkak}" ></h:commandButton>		
+  <h:commandButton id="submit2" value="Przydziel" action="#{kbkakBean.setKbkakToAscript}" ></h:commandButton>
+    	    		</h:column> 	
     		
     		</h:dataTable></h:form>
 		</h:panelGroup>
+	</ui:define>
 </ui:composition>

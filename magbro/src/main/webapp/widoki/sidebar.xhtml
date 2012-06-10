@@ -12,19 +12,29 @@
                 groupCollapsedLeftIcon="triangleDown" topGroupExpandedRightIcon="chevronUp"
                 topGroupCollapsedRightIcon="chevronDown" itemLeftIcon="disc">
                 <rich:panelMenuGroup label="Żołnierze" >
-                    <rich:panelMenuItem label="Główna" name="Item_1_1" action="home?faces-redirect=true"/>
-                    <rich:panelMenuItem label="Wszyscy" name="Item_1_2" action="allsoldiers?faces-redirect=true"/>
-                    <rich:panelMenuItem label="WszyscyZBronia" name="Item_1_2_1" action="allsoldiersWithGuns?faces-redirect=true"/>
-                    <rich:panelMenuItem label="Dodaj" name="Item_1_3" action="addsoldier?faces-redirect=true"/>
+                    <rich:panelMenuItem label="Główna" name="Item_1_1" action="/home?faces-redirect=true"/>
+                    
+                    <rich:panelMenuGroup label="Stan ewid." >
+                     <rich:panelMenuItem label="Wszyscy" name="Item_1_2_1" action="/widoki/zolnierze/allsoldiers?faces-redirect=true"/>
+                     <rich:panelMenuItem label="Z bronią" name="Item_1_2_2" action="/widoki/zolnierze/allsoldiersWithGuns?faces-redirect=true"/>
+                   <rich:panelMenuItem label="Bez broni" name="Item_1_2_3" action="/widoki/zolnierze/allsoldiersWithoutGuns?faces-redirect=true"/>
+                    </rich:panelMenuGroup>
+                   
+                    <rich:panelMenuItem label="Dodaj" name="Item_1_3" action="/widoki/zolnierze/addsoldier?faces-redirect=true"/>
                 </rich:panelMenuGroup>
                
                 <rich:panelMenuGroup label="Kbkak">
-                    <rich:panelMenuItem label="Główna" name="Item_3_1" action="home?faces-redirect=true" />
-                    <rich:panelMenuItem label="Wszystkie" name="Item_3_2" action="allkbkak?faces-redirect=true"  />
-                    <rich:panelMenuItem label="Dodaj" name="Item_3_3" action="addkbkak?faces-redirect=true" />
+                    <rich:panelMenuItem label="Główna" name="Item_3_1" action="/home?faces-redirect=true" />
+                    <rich:panelMenuGroup label="Stan ewid." >
+                     <rich:panelMenuItem label="Wszystkie" name="Item_3_1_1" action="/widoki/kbkak/allkbkak?faces-redirect=true"  />
+                     <rich:panelMenuItem label="Przydzielone" name="Item_3_1_2" action="/widoki/kbkak/przypisanekbkak?faces-redirect=true"/>
+                   <rich:panelMenuItem label="Nie przydzielone" name="Item_3_1_3" action="/widoki/kbkak/nieprzypisanekbkak?faces-redirect=true"/>
+                    </rich:panelMenuGroup>
+                    
+                    <rich:panelMenuItem label="Dodaj" name="Item_3_3" action="/widoki/kbkak/addkbkak?faces-redirect=true" />
                 </rich:panelMenuGroup>
                 <rich:panelMenuGroup label="Maski-mp4">
-                    <rich:panelMenuItem label="Główna" name="Item_3_1" action="home?faces-redirect=true"/>
+                    <rich:panelMenuItem label="Główna" name="Item_3_1" action="/home?faces-redirect=true"/>
                     <rich:panelMenuItem label="Wszystkie" name="Item_3_2" />
                     <rich:panelMenuItem label="Dodaj" name="Item_3_3" />
                 </rich:panelMenuGroup>
