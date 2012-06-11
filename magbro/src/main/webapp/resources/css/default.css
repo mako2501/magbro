@@ -134,3 +134,26 @@ body {
 .property {
 	margin-bottom: 12px;
 }
+/*te tooltipy z richfaces
+*/
+.tooltip {
+        
+        border-width:3px;
+        }
+        .tooltip-custom-body {
+        background-color: blue;
+        }
+ 
+        .tooltip-text {
+        width: 350px;
+        height: 80px;
+        cursor: arrow;
+        border-width: 2px;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+        }
+ 
+        .tooltipData {
+        font-weight: bold;
+        }

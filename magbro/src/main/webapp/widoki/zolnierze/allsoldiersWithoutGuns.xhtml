@@ -3,7 +3,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/template.xhtml">
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich">
 	
 	<ui:define name="content">
 	<!-- LISTA ZOLNIERZY NIE POSIADAJĄCYCH BRONI -->
@@ -29,8 +31,16 @@
     		</h:column>
     		<h:column>
     			<f:facet name="header">Akcja</f:facet>
-  <h:commandButton id="submit" value="Usuń" action="#{soldierBean.deleteSoldier}" ></h:commandButton>
- <h:commandButton id="submit2" value="Przydziel" action="#{soldierBean.setSoldierToAscriptKbkak}" ></h:commandButton>
+  <h:commandButton id="submit" value="Usuń" action="#{soldierBean.deleteSoldier}" >
+  <rich:tooltip followMouse="false" showDelay="1500"  layout="block" style="border-color:blue">
+  <span style="white-space: nowrap"> Usuwa żołnierza z bazy danych <br /> </span>
+            </rich:tooltip>
+  </h:commandButton>
+ <h:commandButton id="submit2" value="Przydziel" action="#{soldierBean.setSoldierToAscriptKbkak}" >
+ <rich:tooltip followMouse="false" showDelay="1500"  layout="block" style="border-color:blue">
+  <span style="white-space: nowrap"> Przydziela temu żołnierzowi broń<br /> </span>
+            </rich:tooltip>
+ </h:commandButton>
     		</h:column>
     		</h:dataTable></h:form>
 		</h:panelGroup>

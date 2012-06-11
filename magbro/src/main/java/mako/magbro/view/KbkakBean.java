@@ -88,4 +88,15 @@ public class KbkakBean {
 		return "/widoki/kbkak/nieprzypisanekbkak";
 	}
 	
+	public String details()
+	{
+		return null;
+	}
+	
+	public String zdejmijKbkak()
+	{
+		am.zdejmijKbkak(kalachs.getRowData());
+		return "null";
+	}
+	
 }

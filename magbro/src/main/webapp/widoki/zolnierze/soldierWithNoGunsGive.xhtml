@@ -3,11 +3,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/template.xhtml">
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich">
 	
 	<ui:define name="content">
 
-	
 		<!-- LISTA ZOLNIERZY NIE POSIADAJĄCYCH BRONI w momencie gdy chce wybrac komu przydzielić-->
 		<h:panelGroup layout="block" styleClass="panel">
 			<h1>Komu przydzielić broń o numerze #{kbkakBean.kbkakToAscript.nr}?</h1><small>żołnierze nie posiadający przypisanej broni</small>
@@ -35,7 +36,12 @@
     		</h:column>
     		<h:column>
     			<f:facet name="header">Akcja</f:facet>
-  <h:commandButton id="submit" value="Przydziel" action="#{soldierBean.setSoldierToAscript}" ></h:commandButton>
+  <h:commandButton id="submit" value="Przydziel" action="#{soldierBean.setSoldierToAscript}" >
+  
+  <rich:tooltip followMouse="false" showDelay="1500"  layout="block" style="border-color:blue">
+  <span style="white-space: nowrap"> Przydziela żołnierzowi wybraną broń<br /> </span>
+            </rich:tooltip>
+  </h:commandButton>
     		</h:column>	
     		</h:dataTable></h:form>
     		

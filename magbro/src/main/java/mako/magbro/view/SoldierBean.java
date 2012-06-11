@@ -114,6 +114,15 @@ public class SoldierBean {
 		am.setKbkakToAscript(null);
 		return "/widoki/zolnierze/allsoldiersWithoutGuns";
 	}
-	
+	public String zdejmijKbkak()
+	{
+		
+		am.zdejmijKbkakWSoldier(soldiers.getRowData());
+		return null;
+	}
+	public String details()
+	{
+		return null;
+	}
 	
 }

@@ -3,7 +3,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/template.xhtml">
+	template="/WEB-INF/templates/template.xhtml"
+                xmlns:rich="http://richfaces.org/rich">
 	
 	<ui:define name="content">
 	<!-- KBKAK KTORE NIE SA PRZYPISANE -->
@@ -27,8 +28,16 @@
     		    	 
     		<h:column>    	
     			<f:facet name="header">Akcja</f:facet>
-  <h:commandButton id="submit" value="Usuń" action="#{kbkakBean.deleteKbkak}" ></h:commandButton>		
-  <h:commandButton id="submit2" value="Przydziel" action="#{kbkakBean.setKbkakToAscript}" ></h:commandButton>
+  <h:commandButton id="submit" value="Usuń" action="#{kbkakBean.deleteKbkak}" >
+  <rich:tooltip followMouse="false" showDelay="1500"  layout="block" style="border-color:blue">
+  <span style="white-space: nowrap"> Usuwa broń z bazy danych <br /> </span>
+            </rich:tooltip>
+  </h:commandButton>		
+  <h:commandButton id="submit2" value="Przydziel" action="#{kbkakBean.setKbkakToAscript}">
+  <rich:tooltip followMouse="false" showDelay="1500"  layout="block" style="border-color:blue">
+  <span style="white-space: nowrap"> Przydziela tą broń wybranemu żołnierzowi<br /> </span>
+            </rich:tooltip>
+  </h:commandButton>
     	    		</h:column> 	
     		
     		</h:dataTable></h:form>

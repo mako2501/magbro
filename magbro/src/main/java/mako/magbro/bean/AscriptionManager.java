@@ -70,5 +70,34 @@ public class AscriptionManager {
 		soldierToAscript=null;
 		
 	}
-	
+/*
+ * zdjecie kbkak z soldier i viceversa po przekazaniu kbkak
+ */
+	public void zdejmijKbkak(Kbkak k) {
+		//pobieram z bazy kbk
+		k = em.find(Kbkak.class, k.getId());
+		//szukam zolnierza po jego id z kbkak
+		Soldier s = em.find(Soldier.class, k.getSoldier().getId());
+		
+		//teraz mam kbkak i moge mu skasowac zolnierza
+		k.setSoldier(null);//kasuje mu zolnierza
+		em.persist(k);
+		//to samo robie z kbk
+		s.setKbkak(null);
+		em.persist(s);	
+	}
+
+/*
+ * metoda dziala tj. zdejmijKbkak(Kbkak k)
+ */
+	public void zdejmijKbkakWSoldier(Soldier s) {
+		s = em.find(Soldier.class, s.getId());
+		Kbkak k = em.find(Kbkak.class, s.getKbkak().getId());
+		
+		s.setKbkak(null);
+		k.setSoldier(null);
+		em.persist(s);
+		em.persist(k);
+		
+	}
 }
