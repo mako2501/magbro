@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
 
 import mako.magbro.model.Soldier;
 import mako.magbro.qualifier.DataRepository;
@@ -19,12 +20,49 @@ public class SoldierDao {
 	@Inject
 	@DataRepository
 	private EntityManager em;
+	
+	/*Id przechowuje id zolnierza ktory ma byc modyfikowany, poniewaz przy robieniu
+	 * update na formularzu stary id byl nullowany i nie moglem tutaj odwolac sie do
+	 * soldiera z bazy przez id, dlatego w beanie przy wywolywaniu formularza details
+	 * wysylam id zolnierza do jego DAO czyli tutaj
+	 */
+	private int IdOfEditingSoldier;
+	
+
+	public int getId() {
+		return IdOfEditingSoldier;
+	}
+
+
+	public void setId(int id) {
+		IdOfEditingSoldier = id;
+	}
+
 
 	public void saveSoldier(Soldier s)
 	{
 		em.persist(s);
+	}
+	
+	
+	public void saveSoldierToShow(Soldier s)
+	{
+		Soldier old = em.find(Soldier.class,IdOfEditingSoldier);
+		
+		/*
+		 * wykonuje update danych
+		 */
+		old.setFirstName(s.getFirstName());
+		old.setLastName(s.getLastName());
+		old.setAge(s.getAge());
+		old.setOjciec(s.getOjciec());
+		old.setPesel(s.getPesel());
+		old.setRank(s.getRank());
+		
+		em.persist(old);
 		
 	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Soldier> getSoldiers()
 	{

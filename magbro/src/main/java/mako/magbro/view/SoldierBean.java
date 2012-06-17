@@ -25,19 +25,22 @@ public class SoldierBean {
 	private Soldier soldier = new Soldier();
 	/*
 	 * by nie trzymac obiektu Soldier w roznych zmiennych zaleznych od zapytan poki co
-	 * trzymam ja w soldiers, by moc z tej klozystac w roznych metodach usuwania itd zamiast
+	 * trzymam ja w soldiers, by moc z tej kozystac w roznych metodach usuwania itd zamiast
 	 * private ListDataModel<Soldier> soldiersWithKbkak = new ListDataModel<Soldier>();
 	 */
 	
 	private ListDataModel<Soldier> soldiers = new ListDataModel<Soldier>();
 	
+	//zolnierz wykorzystywany do przypisywania mu broni	
 	private Soldier soldierToAscript;
 
 	public Soldier getSoldierToAscript() {
 		return soldierToAscript;
 	}
 
-	
+	/*
+	 * zolnierze maja stopnie wybierane z listy rozwijanej
+	 */
 	private List<String>ranks = new ArrayList<String>();
 	
 
@@ -50,14 +53,19 @@ public class SoldierBean {
 		ranks.add("adm.");
 		return ranks;
 	}
-		
+
 	public String saveSoldier()
 	{
 		sdao.saveSoldier(soldier);//dao zapisuje zolnierza
 		soldier = new Soldier();//i tworze nowego by wyczyscic wartosci
 		return "/widoki/zolnierze/allsoldiers";
 	}
-	
+	public String saveSoldierToShow()
+	{
+		sdao.saveSoldierToShow(soldier);
+		soldier = new Soldier();
+		return "/widoki/zolnierze/allsoldiers";
+	}
 	public String deleteSoldier()
 	{
 		Soldier soldierToDelete = soldiers.getRowData();
@@ -116,13 +124,18 @@ public class SoldierBean {
 	}
 	public String zdejmijKbkak()
 	{
-		
 		am.zdejmijKbkakWSoldier(soldiers.getRowData());
 		return null;
 	}
+	/*jako, ze po wykonaniu details trzeba wrocic do starego formularza musi do obsluzyc inna metoda
+	 * by return byl inny
+	 */
 	public String details()
 	{
-		return null;
+		soldier=soldiers.getRowData();
+		sdao.setId(soldier.getId());//zapamietuje jego id w DAO
+		return "detailsSoldier";
 	}
+	
 	
 }

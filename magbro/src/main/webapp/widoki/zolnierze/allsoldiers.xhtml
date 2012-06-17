@@ -13,11 +13,12 @@
 		<h:panelGroup layout="block" styleClass="panel">
 			<h1>Lista wszystkich żołnierzy</h1><small>wszyscy żolnierze znajdujący się w bazie</small>
 			<br />
-			<h:form>
+		   	<h:form> 
     		<h:dataTable value="#{soldierBean.soldiers}" var="s"
     			styleClass="dataTable"
     			headerClass="order-table-header"
-    			rowClasses="order-table-odd-row,order-table-even-row">
+    			rowClasses="order-table-odd-row,order-table-even-row"
+    			>
     		<h:column>
     			<f:facet name="header">Stopień</f:facet>
     			#{s.rank}
@@ -30,12 +31,15 @@
     			<f:facet name="header">Imię</f:facet>
     			#{s.firstName}
     		</h:column>
+    		 
     		<h:column>
     			<f:facet name="header">Akcja</f:facet>
-  <h:commandButton id="submit" value="Details" action="#{soldierBean.details}" ></h:commandButton>
+  <h:commandButton id="submit" value="Szczegóły" action="#{soldierBean.details}" ></h:commandButton>
     		</h:column>
-    		
-    		</h:dataTable></h:form>
+    		    	   				
+    		</h:dataTable>   		
+    		   		
+    	  	  </h:form> 
 		</h:panelGroup>
 	</ui:define>
 </ui:composition>

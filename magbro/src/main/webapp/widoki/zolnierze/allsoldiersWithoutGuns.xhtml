@@ -29,6 +29,7 @@
     			<f:facet name="header">Imię</f:facet>
     			#{s.firstName}
     		</h:column>
+    		<!-- ostatnia kolumna -->
     		<h:column>
     			<f:facet name="header">Akcja</f:facet>
   <h:commandButton id="submit" value="Usuń" action="#{soldierBean.deleteSoldier}" >
@@ -41,8 +42,14 @@
   <span style="white-space: nowrap"> Przydziela temu żołnierzowi broń<br /> </span>
             </rich:tooltip>
  </h:commandButton>
-    		</h:column>
+ 
+ 
+      		</h:column>
     		</h:dataTable></h:form>
 		</h:panelGroup>
+	
+   
+		
+		
 	</ui:define>
 </ui:composition>
