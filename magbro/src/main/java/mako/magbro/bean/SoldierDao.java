@@ -80,6 +80,14 @@ public class SoldierDao {
 		
 		return em.createQuery("from Soldier s where kbkak_id=null").getResultList();
 	}
+	/*
+	 * na razie jeszcze nie robie z tym nic
+	 */
+	@SuppressWarnings("unchecked")
+	public Object numberOfAllSoldiers() {
+		
+		return em.createQuery("select count(*)from Soldier s").getResultList();
+	}
 	
 	
 	@SuppressWarnings("unchecked")

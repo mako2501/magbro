@@ -10,7 +10,7 @@
 	<ui:define name="content">
 <!-- LISTA ZOLNIERZY KTORZY POSIADAJA BRON-->
 		<h:panelGroup layout="block" styleClass="panel">
-			<h1>Lista żołnierzy</h1><small>żołnierze wyłącznie posiadający przydzieloną broń</small>
+			<h1>Lista żołnierzy</h1><small>Żołnierze wyłącznie posiadający przydzieloną broń</small>
 			<br />
 			<h:form>
     		<h:dataTable value="#{soldierBean.soldiersWhosGotKbkak}" var="s"
@@ -35,12 +35,16 @@
     		</h:column>	
     		<h:column>
     			<f:facet name="header">Akcja</f:facet>
-  <h:commandButton id="submit" value="Zdejmij" action="#{soldierBean.zdejmijKbkak}" ></h:commandButton>
+  <h:commandButton id="submit" value="Zdejmij" action="#{soldierBean.zdejmijKbkak}" >
+  <rich:tooltip followMouse="false" showDelay="1500"  layout="block" style="border-color:blue">
+  <span style="white-space: nowrap">#{messages.takeOffKbk}<br /> </span>
+  </rich:tooltip>
+  </h:commandButton>
  
   <!--  -->
     		</h:column>
-    		
-    		</h:dataTable></h:form>
+    		</h:dataTable>
+    		</h:form>
 		</h:panelGroup>
 	</ui:define>
 </ui:composition>

@@ -6,7 +6,18 @@
 	template="/WEB-INF/templates/template.xhtml">
 	
 	<ui:define name="content">
-	<h:panelGroup layout="block" styleClass="panel"><h1>Magazyn broni</h1>Podstawowe operacje</h:panelGroup>
-	
+	<h:panelGroup layout="block" styleClass="panel"><h1>Magazyn broni</h1>Informacje</h:panelGroup>
+			Magazyn broni v.1.02
+			<br	/>
+			Ewidencja broni:<br/>
+			- Kbkak - dodawanie do bazy nowego karabinka, usuwanie jeśli nie jest on przydzielony do żołnierza,
+			 sprawdzanie list wszystkich karabinków, tylko tych przydzielonych lub też tych, które nie są jeszcze przydzielone
+			 żołnierzom.
+			<br/><br/>
+			Ewidencja żołnierzy - dodawanie nowych żołnierzy, usuwanie ich z bazy pod warunkiem, że nie mają przydzielonej broni.
+			Sprawdzanie szczegółowych danych żołnierzy (na listach są wyświetlane, tylko niektóre informacje) z możliwością
+			ich edycji w bazie. Listy żołnierzy zależne od tego czy żołnierz posiada broń czy też nie.
+			<br/>
+			
 	</ui:define>
 </ui:composition>

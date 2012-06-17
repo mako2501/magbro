@@ -30,12 +30,12 @@
     			<f:facet name="header">Akcja</f:facet>
   <h:commandButton id="submit" value="Usuń" action="#{kbkakBean.deleteKbkak}" >
   <rich:tooltip followMouse="false" showDelay="1500"  layout="block" style="border-color:blue">
-  <span style="white-space: nowrap"> Usuwa broń z bazy danych <br /> </span>
+  <span style="white-space: nowrap"> #{messages.delWeapon}<br /> </span>
             </rich:tooltip>
   </h:commandButton>		
   <h:commandButton id="submit2" value="Przydziel" action="#{kbkakBean.setKbkakToAscript}">
   <rich:tooltip followMouse="false" showDelay="1500"  layout="block" style="border-color:blue">
-  <span style="white-space: nowrap"> Przydziela tą broń wybranemu żołnierzowi<br /> </span>
+  <span style="white-space: nowrap">#{messages.giveThatWeap}<br /> </span>
             </rich:tooltip>
   </h:commandButton>
     	    		</h:column> 	

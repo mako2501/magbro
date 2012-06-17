@@ -96,7 +96,13 @@ public class SoldierBean {
 	{
 		return soldier;
 	}
-
+	/*
+	public String getNumberOfSoldiers()
+	{
+		
+		return sdao.numberOfAllSoldiers().toString();
+	}
+	 */
 	public void setSoldier(Soldier soldier) {
 		this.soldier = soldier;
 	}
@@ -132,9 +138,11 @@ public class SoldierBean {
 	 */
 	public String details()
 	{
+		
 		soldier=soldiers.getRowData();
 		sdao.setId(soldier.getId());//zapamietuje jego id w DAO
 		return "detailsSoldier";
+		
 	}
 	
 	

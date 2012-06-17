@@ -11,7 +11,7 @@
 
 		<!-- LISTA ZOLNIERZY -->
 		<h:panelGroup layout="block" styleClass="panel">
-			<h1>Lista wszystkich żołnierzy</h1><small>wszyscy żolnierze znajdujący się w bazie</small>
+			<h1>Lista wszystkich żołnierzy</h1><small>Wszyscy żolnierze znajdujący się w bazie.</small>
 			<br />
 		   	<h:form> 
     		<h:dataTable value="#{soldierBean.soldiers}" var="s"
@@ -34,7 +34,12 @@
     		 
     		<h:column>
     			<f:facet name="header">Akcja</f:facet>
-  <h:commandButton id="submit" value="Szczegóły" action="#{soldierBean.details}" ></h:commandButton>
+  <h:commandButton id="submit" value="Szczegóły" action="#{soldierBean.details}" >
+   <rich:tooltip followMouse="false" showDelay="1500"  layout="block" style="border-color:blue">
+  <span style="white-space: nowrap">#{messages.detailsSoldier}<br /> </span>
+  </rich:tooltip>
+  
+  </h:commandButton>
     		</h:column>
     		    	   				
     		</h:dataTable>   		
